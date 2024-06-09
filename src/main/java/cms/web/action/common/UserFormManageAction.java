@@ -257,7 +257,7 @@ public class UserFormManageAction {
 		
 		
 		User user = new User();
-		
+		user.setCode(formbean.getCode());
 		Map<String,String> error = new HashMap<String,String>();
 		SystemSetting systemSetting = settingService.findSystemSetting_cache();
 		if(systemSetting.getCloseSite().equals(2)){

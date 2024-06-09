@@ -122,8 +122,22 @@
 		        			<div class="form-field-help">没有可以不填写</div>
 		        		</div>
 		        	</div>
-		        	
-		        	<!-- 用户自定义注册功能项 -->
+
+					<div class="form-field" >
+						<div id="code_field_error" class="form-field-container">
+							<div class="form-field-text">
+								<div class="form-field-input-container">
+									<input id="code" maxLength="30" class="form-field-text-input" type="text" value="" onfocus="inputBoxClickTip(this);" onblur="inputBoxOutTip(this);">
+									<label class="form-field-label">邀请码</label>
+								</div>
+							</div>
+							<div id="code_prompt_error" class="form-field-prompt-error"></div>
+							<div class="form-field-help">没有可以不填写</div>
+						</div>
+					</div>
+
+
+					<!-- 用户自定义注册功能项 -->
 					<#list userCustomList as userCustom>
 		        		<#if userCustom.chooseType ==1>
 							<div class="form-field" >
@@ -450,6 +464,7 @@
 			$("#issue_field_error").parent().show();
 			$("#answer_field_error").parent().show();
 			$("#email_field_error").parent().show();
+			$("#code_field_error").parent().show();
 			$("#smsCode_field_error").parent().hide();
 		}
 		if(id == "mobile_tab"){//手机用户
@@ -458,6 +473,7 @@
 			$("#issue_field_error").parent().hide();
 			$("#answer_field_error").parent().hide();
 			$("#email_field_error").parent().hide();
+			$("#code_field_error").parent().hide();
 			$("#smsCode_field_error").parent().show();
 		}
 	}
@@ -735,6 +751,11 @@
 		var email = $("#email").val().trim();
 		if(email != ""){
 			parameter += "&email="+encodeURIComponent(email);
+		}
+		//邮箱
+		var code = $("#code").val().trim();
+		if(code != ""){
+			parameter += "&code="+encodeURIComponent(code);
 		}
 		//手机验证码
 		var smsCode = $("#smsCode").val().trim();

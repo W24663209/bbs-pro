@@ -240,6 +240,10 @@
 					<el-col :span="4"><div class="name">备注：</div></el-col>
 					<el-col :span="20"><div class="content">{{user.remarks}}</div></el-col>
 				</el-row>
+        <el-row :gutter="10" type="flex">
+          <el-col :span="4"><div class="name">邀请码：</div></el-col>
+          <el-col :span="20"><div class="content">{{user.code}}</div></el-col>
+        </el-row>
 				
 				<div v-for="(userCustom,index) in userCustomList">
 					<el-row :gutter="10" type="flex" v-if="userCustom.chooseType ==1">

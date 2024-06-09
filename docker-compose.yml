@@ -1,0 +1,38 @@
+version: '3'
+services:
+  bbs-pro:
+    image: openjdk:8
+    container_name: bbs-pro
+    restart: always
+    volumes:
+      - ./jdk11-26/admin:/app
+      - ./logs/admin:/tmp/logs
+#      - /usr/share/zoneinfo/Asia/Kolkata:/etc/localtime
+    working_dir: /app
+    entrypoint: /app/entrypoint.sh
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"
+        max-file: "3"
+    networks:
+      - proxynet
+  mysql:
+    image: mysql:8.2.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_USER: 'test'
+      MYSQL_PASS: '123456'
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./my.cnf:/etc/my.cnf
+      - ./db:/db
+      - /usr/share/zoneinfo/Asia/Kolkata:/etc/localtime
+    networks:
+      - proxynet
+networks:
+  proxynet:
+    name: chrome
