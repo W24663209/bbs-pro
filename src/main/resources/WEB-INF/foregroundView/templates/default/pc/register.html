@@ -132,7 +132,7 @@
 								</div>
 							</div>
 							<div id="code_prompt_error" class="form-field-prompt-error"></div>
-							<div class="form-field-help">没有可以不填写</div>
+<!--							<div class="form-field-help">没有可以不填写</div>-->
 						</div>
 					</div>
 
@@ -640,6 +640,16 @@
 				return false;
 			}
 		}
+		if(field == "code"){
+			var code = $("#"+field).val().trim();
+			if(code == ""){
+				$("#"+field+"_prompt_error").html("邀请码不能为空");
+				$("#"+field+"_prompt_error").show();
+				$("#"+field+"_field_error").addClass("form-field-error");
+				return false;
+			}
+		}
+
 		if(field == "email"){//邮箱
 			var email = $("#"+field).val().trim();
 			if(email != ""){
@@ -961,6 +971,9 @@
 				isVerification = false;
 			}
 			if(verification("captchaValue") == false){
+				isVerification = false;
+			}
+			if(verification("code") == false){
 				isVerification = false;
 			}
 		}
