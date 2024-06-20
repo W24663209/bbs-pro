@@ -1,9 +1,30 @@
 <#-- 页脚 公共页(生成新引用页) -->
 <div class="footer">
     <div class="message">
-
 	</div>
-	<div class="copyright">Powered by <a target="_blank" href="http://www.diyhi.com/" class="link">diyhi</a>
-	<a target="_blank" href="feedback">联系我们</a>
-	</div>	
+	<div class="copyright">
+		<a target="_blank" class="link">C0aJole</a>
+	  <span id="show_info" >联系我们</span>
+	</div>
 </div>
+
+<div id="lxfs"  >
+	<img id="lxfs_img" src="${commonPath}images/lxfs.png" >
+</div>
+
+
+<script language="javascript" type="text/javascript">
+
+
+	show_info.addEventListener('mouseenter', function(event) {
+		var lxfs = document.getElementById("lxfs");
+		lxfs.style.display= "block";//显示
+		// 处理鼠标进入事件的代码
+	});
+	show_info.addEventListener('mouseout', function(event) {
+		var lxfs = document.getElementById("lxfs");
+		lxfs.style.display= "none";//隐藏
+		// 处理鼠标进入事件的代码
+	});
+
+	</script>
