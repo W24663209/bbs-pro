@@ -31,6 +31,9 @@
 .cms-error-warning-line:before {
   content: "\e947";
 }
+.cms-yqm:before {
+  content: "\1001";
+}
 .cms-map-pin-line:before {
   content: "\e948";
 }

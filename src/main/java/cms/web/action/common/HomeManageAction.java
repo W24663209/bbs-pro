@@ -5942,6 +5942,30 @@ public class HomeManageAction {
 		    return "/templates/"+dirName+"/"+accessSourceDeviceManage.accessDevices(request)+"/reportList";	
 		}
 	}
-	
-	
+
+
+
+
+
+	/**
+	 * 举报列表
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/user/control/yqm",method=RequestMethod.GET)
+	public String reportYqmUI(ModelMap model,PageForm pageForm,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+		boolean isAjax = WebUtil.submitDataMode(request);//是否以Ajax方式提交数据
+
+		if(isAjax){
+			WebUtil.writeToWeb("", "json", response);
+			return null;
+		}else{
+			String dirName = templateService.findTemplateDir_cache();
+			return "/templates/"+dirName+"/"+accessSourceDeviceManage.accessDevices(request)+"/yqm";
+		}
+	}
 }

@@ -16421,6 +16421,43 @@ var reportList_component = Vue.extend({
 });
 
 
+//邀请码
+var yqm_component = Vue.extend({
+	template : '#yqm-template',
+	data : function data() {
+		return {
+			yqm : "", //举报集合
+			loading : false, //加载中
+		}
+	},
+	created : function created() {
+		//this.queryUserLoginLog();
+	},
+	methods : {
+		//查询举报页
+		getYqm : function() {
+			var _self = this;
+				$.ajax({
+					type : "GET",
+					cache : false,
+					async : true, //默认值: true。默认设置下，所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为 false。
+					url : "user/control/reportList",
+					data : data,
+					success : function success(result) {
+						console.log(1111)
+						if (result != "") {
+							}
+					},
+					complete : function complete(XMLHttpRequest, textStatus) {
+						$.ajaxSettings.complete(XMLHttpRequest, textStatus);
+					}
+				});
+			}
+
+		}
+});
+
+
 
 /**------------------------------------------- 公共组件 ------------------------------------------------**/
 
@@ -16558,7 +16595,8 @@ var routes = [
 	{path : '/user/control/redEnvelopeAmountDistributionList',component : redEnvelopeAmountDistributionList_component}, //发红包金额分配
 	{path : '/user/control/receiveRedEnvelopeList',component : receiveRedEnvelopeList_component}, //收红包
 	{path : '/user/control/reportList',component : reportList_component}, //举报列表
-	
+	{path : '/user/control/yqm',component : yqm_component}, //邀请码
+
 	
 	{path : '*',redirect : '/index'} //其余路由重定向至首页
 ];

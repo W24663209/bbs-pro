@@ -1,0 +1,101 @@
+<#-- 默认举报列表 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<base href="${baseURL}">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>举报列表 - ${title}</title>
+	<meta name="keywords" content="${keywords}"/>
+	<meta name="description" content="${description}"/>
+	<link href="${commonPath}css/common.css" type="text/css" rel="stylesheet" charset="utf-8">
+	<link href="${commonPath}css/themify-icons/style.css" type="text/css" rel="stylesheet">
+	<script language="javascript" src="${commonPath}js/tool.js" type="text/javascript"></script>
+	<script language="javascript" src="${commonPath}js/ajax.js" type="text/javascript"></script>
+	<script language="javascript" src="${commonPath}js/json2.js" type="text/javascript"></script>
+	<script type="text/javascript" src="${commonPath}js/jquery/jquery.min.js" language="javascript"></script>
+	<link href="${commonPath}js/imageZoom/style.css" rel="stylesheet" type="text/css" />
+	<link href="${commonPath}js/simplebox/css/simplebox.css"  type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="${commonPath}js/simplebox/js/simplebox.js" language="javascript"></script>
+	
+</head>
+<script type="text/javascript" language="javascript"> 
+	
+	
+</script>
+<body>
+<#-- 引入页头 -->
+<@include action="${newPublic_2}"/>
+<div class="skeleton ">
+	<div class="main wrap backgroundModule" >
+
+		<#-- 引入服务导航 -->
+		<@include action="${newPublic_4}"/>
+		<!-- 举报列表 -->
+		<button type="button" class="payButton" onclick="getYqm()">生成邀请码</button>
+		<span id = "yqm">{{yqm}}</span>
+		</div>
+	</div>
+
+</div>
+<#--引入页脚-->
+<@include action="${newPublic_3}"/>
+</body>
+<!-- 图片点击放大 -->
+<script type="text/javascript">
+	$(function () {
+    	$(".tm-m-photos-thumb li").simplebox();
+    	
+    //	$(".topicContent img,.commentContent img").simplebox();
+	});
+
+	//更换验证码
+	function getYqm(){
+		var yqm = document.getElementById("yqm");
+		this.$ajax.get('user/manage/home', {
+			params: {
+			}
+		})
+		.then(function (response) {
+			if(response == null){
+				return;
+			}
+			let result = response.data;
+			if(result){
+				let returnValue = JSON.parse(result);
+				if(returnValue.code === 200){//成功
+					let mapData = returnValue.data;
+					for(let key in mapData){
+						if(key == "staffLoginLogList"){//最新登录日志
+							_self.tableData = mapData[key];
+						}else if(key == "auditTopicCount"){//待审核话题数量
+							_self.auditTopicCount = mapData[key];
+						}else if(key == "auditCommentCount"){//待审核评论数量
+							_self.auditCommentCount = mapData[key];
+						}else if(key == "auditCommentReplyCount"){//待审核评论回复数量
+							_self.auditCommentReplyCount = mapData[key];
+						}else if(key == "auditQuestionCount"){//待审核问题数量
+							_self.auditQuestionCount = mapData[key];
+						}else if(key == "auditAnswerCount"){//待审核答案数量
+							_self.auditAnswerCount = mapData[key];
+						}else if(key == "auditAnswerReplyCount"){//待审核答案回复数量
+							_self.auditAnswerReplyCount = mapData[key];
+						}else if(key == "feedbackCount"){//留言数量
+							_self.feedbackCount = mapData[key];
+						}else if(key == "reportCount"){//待处理举报总数
+							_self.reportCount = mapData[key];
+						}
+
+
+					}
+				}
+			}
+
+
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
+
+	}
+</script>
+</html>

@@ -2513,6 +2513,10 @@
 		    		<div class="icon cms-login" ></div> 
 		    		<span class="name">登录日志</span>
 		    	</router-link>
+					<router-link to="/user/control/yqm"  class="item" tag="div">
+						<div class="icon cms-yqm" ></div>
+						<span class="name">邀请码</span>
+					</router-link>
 	    	</div>
 	    </div>
 		
@@ -4631,6 +4635,15 @@
 		</div>
 	</div>
 </template>
+
+<!-- yqm -->
+<template id="yqm-template">
+	<div>
+			<mt-button icon="back" @click.native="getYqm();" slot="left" style='font-size:12px'>生成邀请码</mt-button>
+		  <span class="cms-home" style="font-size: 20px;">{{yqm}}</span>
+	</div>
+</template>
+
 
 <!-- 公共模块 -->
 <template id="bottomTab-template">
