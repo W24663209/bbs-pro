@@ -1,6 +1,8 @@
 package cms.web.action.common;
 
 
+import cms.mapper.InvitationCodeMapper;
+import cms.service.user.InvitationCodeService;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -227,6 +229,9 @@ public class UserFormManageAction {
 		}
 	}
 
+	@Resource
+	InvitationCodeService invitationCodeService;
+
 	/**
 	 * 会员注册
 	 * @param model
@@ -342,7 +347,10 @@ public class UserFormManageAction {
 					}else{
 						error.put("account", ErrorView._815.name());//账号不能为空
 					}
-					
+				  String code = invitationCodeService.selectCode(formbean.getCode());
+					if (StringUtils.isEmpty(code)) {
+						error.put("code", ErrorView._1591.name());//邀请码不能为空
+					}
 					if(formbean.getIssue() != null && !"".equals(formbean.getIssue().trim())){//密码提示问题
 						if(formbean.getIssue().length()>50){
 							error.put("issue", ErrorView._817.name());//密码提示问题不能超过50个字符
