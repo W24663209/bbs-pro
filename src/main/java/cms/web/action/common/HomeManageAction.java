@@ -5959,7 +5959,8 @@ public class HomeManageAction {
 			throws Exception {
 
 		boolean isAjax = WebUtil.submitDataMode(request);//是否以Ajax方式提交数据
-
+		//获取登录用户
+		AccessUser accessUser = AccessUserThreadLocal.get();
 		if(isAjax){
 			WebUtil.writeToWeb("", "json", response);
 			return null;

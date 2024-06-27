@@ -4639,8 +4639,18 @@
 <!-- yqm -->
 <template id="yqm-template">
 	<div>
-			<mt-button icon="back" @click.native="getYqm();" slot="left" style='font-size:12px'>生成邀请码</mt-button>
-		  <span class="cms-home" style="font-size: 20px;">{{yqm}}</span>
+	<mt-header fixed title="邀请码" style="background: #fafafa; color: #000000;font-size: 14px">
+		<mt-button icon="back" @click.native="back();" slot="left" style='font-size:12px'>返回</mt-button>
+		<router-link to="/index" slot="right">
+			<span class="cms-home" style="font-size: 18px;color: #595959;"></span>
+		</router-link>
+	</mt-header>
+		<div class="yqModule">
+			<div class="yqmClass">
+				<mt-button type="primary" @click="getYqm()">生成邀请码</mt-button>
+				<mt-field  id="yqm" style=" size: 12px;">{{yqm}}</mt-field>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -4778,6 +4788,13 @@ image[lazy=loading] {
     height: 100%;
     /* height: 100vh; */
     overflow: hidden;
+}
+
+.yqmClass{
+	display: flex;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 /* 底部导航栏选中背景色 */

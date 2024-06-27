@@ -9,7 +9,17 @@ public class PageForm implements Serializable{;
 	private Integer page = 1;
 	/** 设置查询标记,用来指定执行某些SQL语句 **/
 	private String query;
-	
+
+	private Boolean generate = false;
+
+	public Boolean getGenerate() {
+		return generate;
+	}
+
+	public void setGenerate(Boolean generate) {
+		this.generate = generate;
+	}
+
 	public Integer getPage() {
 		if(page == null){
 			return 1;

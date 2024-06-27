@@ -37,15 +37,17 @@ jasypt:
     password: 123456  #加密盐值
     algorithm: PBEWithMD5AndDES
     iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+    # application.properties
 spring:
   #数据库
   datasource:
     
     #账号配置
-    url: jdbc:mysql://192.168.1.117:3306/bbs-pro?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL&allowPublicKeyRetrieval=true&useSSL=false&rewriteBatchedStatements=true
+    url: jdbc:mysql://localhost:3306/bbs-pro?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL&allowPublicKeyRetrieval=true&useSSL=false&rewriteBatchedStatements=true
     username: root
     #加密由ENC()包裹
-    password: otpay
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     #hikari数据库连接池
     hikari:

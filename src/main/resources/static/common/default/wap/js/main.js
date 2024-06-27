@@ -16438,15 +16438,13 @@ var yqm_component = Vue.extend({
 		getYqm : function() {
 			var _self = this;
 				$.ajax({
-					type : "GET",
+					type : "post",
 					cache : false,
 					async : true, //默认值: true。默认设置下，所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为 false。
-					url : "user/control/reportList",
-					data : data,
+					url : "/user/control/api/v2/invitation_code/get_code",
 					success : function success(result) {
-						console.log(1111)
-						if (result != "") {
-							}
+						console.log(result)
+						_self.yqm = result;
 					},
 					complete : function complete(XMLHttpRequest, textStatus) {
 						$.ajaxSettings.complete(XMLHttpRequest, textStatus);

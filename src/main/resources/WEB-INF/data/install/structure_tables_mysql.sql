@@ -2595,3 +2595,19 @@ CREATE TABLE `userrolegroup` (
   KEY `userRoleGroup_1_idx` (`userName`,`validPeriodEnd`),
   KEY `userRoleGroup_3_idx` (`userRoleId`,`userName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+#
+# Structure for table "invitation_code"
+#
+
+
+CREATE TABLE `invitation_code` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL,
+  `code` varchar(32) DEFAULT NULL,
+   `type` int(5) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

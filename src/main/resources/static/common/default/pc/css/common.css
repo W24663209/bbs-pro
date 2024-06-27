@@ -172,6 +172,15 @@ html,body{
 	-ms-flex-pack: center;
 	 
 }
+
+
+.yqmClass{
+	display: flex;
+	margin-top: 50px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
 /* 正文 */
 .main{
 	margin:0 auto;

@@ -1770,7 +1770,8 @@ var routes = [
 	              			next();
 	              		}
 	              	},//修改友情链接
-	              	
+				          //会员邀请码
+			            {path : '/admin/control/user/yqm',component : () => loadModule('./admin/component/user/yqmList.vue',options), name:'yqmList',meta: {index:'2-200100-7',title:'会员邀请码',cacheNumber:'0'}},//会员邀请码
 	              	{path : '/admin/control/user/search',component : () => loadModule('./admin/component/user/userSearch.vue',options), name:'userSearch',meta: {index:'2-200100-1',title:'会员搜索',cacheNumber:'0'}},//会员搜索
 	              	{path : '/admin/control/user/list',component : () => loadModule('./admin/component/user/userList.vue',options), name:'userList',meta: {index:'2-200100-2',title:'会员列表',cacheNumber:'0'}},//会员列表
 	              	{path : '/admin/control/user/manage/show',component : () => loadModule('./admin/component/user/userShow.vue',options) ,name:'userShow',meta: {parent:'2-200100-2',title:'用户查看'},

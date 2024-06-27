@@ -11,7 +11,9 @@ public enum ResourceGroupEnum {
 	FAVORITE("收藏", 3000000,10),
 	LIKE("点赞", 4000000,10),
 	FOLLOW("关注", 5000000,10),
-	PRIVATEMESSAGE("私信", 6000000,10);
+	PRIVATEMESSAGE("私信", 6000000,10),
+	INVITATION_CODE("邀请码", 7000000,10)
+	;
 	
     private ResourceGroupEnum(String name, Integer code,Integer type) {
         this.name = name;

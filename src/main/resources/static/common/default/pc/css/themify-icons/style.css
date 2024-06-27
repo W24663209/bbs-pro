@@ -28,6 +28,9 @@
 .cms-add-line:before {
   content: "\e94b";
 }
+.cms-yqm:before {
+  content: "\e94c";
+}
 .cms-error-warning-line:before {
   content: "\e947";
 }

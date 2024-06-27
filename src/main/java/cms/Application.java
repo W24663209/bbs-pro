@@ -15,6 +15,7 @@ import javax.servlet.SessionCookieConfig;
 import javax.servlet.SessionTrackingMode;
 
 import org.apache.commons.lang3.StringUtils;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
@@ -33,6 +34,7 @@ import cms.web.filter.InitApplicationListener;
 @EnableScheduling // 开启定时
 @SpringBootApplication(exclude = {FreeMarkerAutoConfiguration.class})//取消freemarker自动配置
 @ServletComponentScan("cms.web.filter")
+@MapperScan("cms.mapper")
 public class Application extends SpringBootServletInitializer{  
 	
     // 在main方法中启动一个应用，即：这个应用的入口  

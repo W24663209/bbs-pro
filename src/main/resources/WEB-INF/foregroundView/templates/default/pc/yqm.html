@@ -30,9 +30,11 @@
 
 		<#-- 引入服务导航 -->
 		<@include action="${newPublic_4}"/>
-		<!-- 举报列表 -->
-		<button type="button" class="payButton" onclick="getYqm()">生成邀请码</button>
-		<span id = "yqm">{{yqm}}</span>
+		<div class="yqmClass">
+			<!-- 举报列表 -->
+			<button type="button" class="operation-button" onclick="getYqm()">生成邀请码</button>
+			<span id="yqm" style="margin-left: 10px"></span>
+		</div>
 		</div>
 	</div>
 
@@ -51,51 +53,13 @@
 	//更换验证码
 	function getYqm(){
 		var yqm = document.getElementById("yqm");
-		this.$ajax.get('user/manage/home', {
-			params: {
-			}
-		})
-		.then(function (response) {
-			if(response == null){
-				return;
-			}
-			let result = response.data;
-			if(result){
-				let returnValue = JSON.parse(result);
-				if(returnValue.code === 200){//成功
-					let mapData = returnValue.data;
-					for(let key in mapData){
-						if(key == "staffLoginLogList"){//最新登录日志
-							_self.tableData = mapData[key];
-						}else if(key == "auditTopicCount"){//待审核话题数量
-							_self.auditTopicCount = mapData[key];
-						}else if(key == "auditCommentCount"){//待审核评论数量
-							_self.auditCommentCount = mapData[key];
-						}else if(key == "auditCommentReplyCount"){//待审核评论回复数量
-							_self.auditCommentReplyCount = mapData[key];
-						}else if(key == "auditQuestionCount"){//待审核问题数量
-							_self.auditQuestionCount = mapData[key];
-						}else if(key == "auditAnswerCount"){//待审核答案数量
-							_self.auditAnswerCount = mapData[key];
-						}else if(key == "auditAnswerReplyCount"){//待审核答案回复数量
-							_self.auditAnswerReplyCount = mapData[key];
-						}else if(key == "feedbackCount"){//留言数量
-							_self.feedbackCount = mapData[key];
-						}else if(key == "reportCount"){//待处理举报总数
-							_self.reportCount = mapData[key];
-						}
+		get_request(function (value) {
+			console.log(value)
+			yqm.textContent = value;
+		}, '/user/control/api/v2/invitation_code/get_code', true);
 
-
-					}
-				}
-			}
-
-
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
 
 	}
+
 </script>
 </html>
